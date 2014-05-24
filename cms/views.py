@@ -14,6 +14,7 @@ def Home(request):
     '''主页'''
     if request.user.is_authenticated():
         user = request.user
+        userinfo = user.userinfo_set.all()[0]
     title = u'主页'
     position = 'home'
     return render_to_response('home.html', locals())
@@ -22,6 +23,7 @@ def Post(request):
     '''编辑博文和处理'''
     if request.user.is_authenticated():
         user = request.user
+        userinfo = user.userinfo_set.all()[0]
     else:
         return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/post/')
     if request.method == 'POST':
@@ -59,16 +61,15 @@ def Detail(request, uid):
     '''博文详细'''
     if request.user.is_authenticated():
         user = request.user
+        userinfo = user.userinfo_set.all()[0]
     else:
         return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
     try:
-        blog = Blog.objects.get(id=uid)
+        blog = Blog.objects.get(uid=uid)
     except Blog.DoesNotExist:
         raise Http404
     title = blog.title
     position = 'detail'
     return render_to_response('detail.html', locals())
-
-    
 
 

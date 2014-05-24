@@ -12,7 +12,7 @@
 {% endblock %}
 {% block content %}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-4 col-sm-4">
             <div class="funny-boxes funny-boxes-colored funny-boxes-grey">
                 <div class="row">
                     <div class="col-md-6 funny-boxes-img">
@@ -66,13 +66,13 @@
             <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-body text-justify">
-                    <h2><a href="{% url "detail" i.id %}">{{ i.title }}</a></h2>
-                    <p>{{ i.content|safe }}</p>
-                    <a class="btn-u btn-u-sm" href="{% url "detail" i.id %}">阅读全部</a>
+                    <h2><a href="{% url "detail" i.uid %}">{{ i.title }}</a></h2>
+                    <p>{{ i.content|truncatewords_html:15|safe }}</p>
+                    <a class="btn-u btn-u-sm" href="{% url "detail" i.uid %}">阅读全部</a>
                 </div>
                 <div class="timeline-footer">
                     <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> {{ i.time }}</li>
+                        <li><i class="fa fa-clock-o"></i> {{ i.time|date:"Y-m-d H:i:s" }}</li>
                     </ul>
                 </div>
             </div>

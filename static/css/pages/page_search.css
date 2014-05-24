@@ -6,7 +6,8 @@
 	text-align: center;
 	position: relative;
 	margin-bottom: 20px;
-	background: url(../../img/bg/7.jpg) 50% 0 repeat fixed;		
+	background: url(../../img/bg/7.jpg) 50% 0 no-repeat fixed;
+    background-size: 100%;
 }
 
 .search-block:before {

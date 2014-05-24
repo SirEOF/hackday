@@ -19,8 +19,8 @@
                 <h2>{{ blog.title }}</h2>
                 <div class="blog-post-tags">
                     <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-calendar"></i> {{ blog.time }}</li>
-                        <li><i class="fa fa-pencil"></i> {{ user.username }}</li>
+                        <li><i class="fa fa-calendar"></i> {{ blog.time|date:"Y-m-d H:i:s" }}</li>
+                        <li><i class="fa fa-pencil"></i> {{ userinfo.nickname }}</li>
                     </ul>
                 </div>
                 {{ blog.content|safe }}
@@ -34,6 +34,7 @@
         <!-- Right Sidebar -->
         <div class="col-md-3 magazine-page">
             <!-- Search Bar -->
+            <!--
             <div class="headline headline-md"><h2>搜索</h2></div>
             <div class="input-group margin-bottom-40">
                 <input type="text" class="form-control" placeholder="请输入您要搜索的内容">
@@ -41,6 +42,7 @@
                     <button class="btn-u" type="button">搜索</button>
                 </span>
             </div>
+            -->
             <!-- End Search Bar -->
 
             <!-- Posts -->
