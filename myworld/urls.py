@@ -9,4 +9,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^$', 'cms.testview.home', name='home'),
+    url(r'^login/$', 'cms.testview.login', name='login'),
+    url(r'^register/$', 'cms.testview.register', name='register'),
 )

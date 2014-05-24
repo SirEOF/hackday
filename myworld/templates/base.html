@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    {% block head %}{% endblock %}
+    {% block css_page %}{% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+        {% block header %}{% endblock %}
+
+        {% block slider %}{% endblock %}
+
+        <div class="container content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="footer">
+            {% block footer %}{% endblock %}
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved.
+                            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="assets/img/logo2-default.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{% static "plugins/jquery-1.10.2.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/jquery-migrate-1.2.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/bootstrap/js/bootstrap.min.js" %}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{% static "plugins/back-to-top.js" %}"></script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+    <!--[if lt IE 9]>
+        <script src="{% static "plugins/respond.js" %}"></script>
+    <![endif]-->
+    {% block js_page %}{% endblock %}
+</body>
+</html>

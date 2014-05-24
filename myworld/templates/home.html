@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "plugins/flexslider/flexslider.css" %}">
+    <link rel="stylesheet" href="{% static "plugins/parallax-slider/css/parallax-slider.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block slider %}
+    {% include "common/slider.html" %}
+{% endblock %}
+{% block content %}
+    <div class="row margin-bottom-30">
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-lock service-icon"></i>
+                <div class="desc">
+                    <h4>你的个人世界</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-group service-icon"></i>
+                <div class="desc">
+                    <h4>连接你与他人</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-rocket service-icon"></i>
+                <div class="desc">
+                    <h4>探索生活</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "plugins/flexslider/jquery.flexslider-min.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/parallax-slider/js/modernizr.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/parallax-slider/js/jquery.cslider.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/pages/index.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initSliders();
+            Index.initParallaxSlider();
+        });
+    </script>
+{% endblock %}
