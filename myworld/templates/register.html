@@ -36,6 +36,12 @@
                     </div>
                 </div>
 
+                {% if Error %}
+                    <div class="alert alert-danger fade in">
+                        {{ Error }}
+                    </div>
+                {% endif %}
+
                 <hr>
 
                 <div class="row">

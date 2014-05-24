@@ -50,37 +50,15 @@
 
             <!-- Posts -->
             <div class="posts margin-bottom-40">
-                <div class="headline headline-md"><h2>最近文章</h2></div>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/6.jpg" %}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/10.jpg" %}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
-                    </dd>
-                </dl>
+                <div class="blog-twitter">
+                    <div class="headline headline-md"><h2>最新文章</h2></div>
+                    <div class="blog-twitter-inner">
+                        {% for i in latest %}
+                        <a href="{% url "detail" i.uid %}">{{ i.title }}</a>: {{ i.content|truncatewords_html:4|safe }}
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
             </div><!--/posts-->
             <!-- End Posts -->
         </div>
