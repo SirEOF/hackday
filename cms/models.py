@@ -8,6 +8,7 @@ from DjangoUeditor.models import UEditorField
 class Blog(models.Model):
     '''博文内容'''
     user = models.ForeignKey(User)
+    private = models.BooleanField(u'是否为私密', default=False)
     uid = models.CharField(u'博文编号', max_length=10)
     title = models.CharField(u'题目', max_length=100)
     content = models.TextField()
