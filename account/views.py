@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
+from myworld.settings import BASE_DIR
+
 from account.models import *
 
 def Login(request):
@@ -97,7 +99,16 @@ def UserCenter(request):
     if request.method == 'POST':
         userinfo.nickname = (request.POST['nickname'] if request.POST['nickname'] else userinfo.nickname)
         userinfo.age = (request.POST['age'] if request.POST['age'] else userinfo.age)
-        userinfo.location = (request.POST['location'] if request.POST['location'] else userinfo.location)  
+        userinfo.location = (request.POST['location'] if request.POST['location'] else userinfo.location)
+        if auth.authenticate(username=user.username, password=request.POST['old_pwd']) and request.POST['new_pwd1']==request.POST['new_pwd2']:
+            user.set_password(request.POST['new_pwd1'])
+            user.save()
+        if 'avatar' in request.FILES:
+            avatar_obj = request.FILES.get('avatar')	
+            userinfo.avatar = 'img/avatar' + str(user.id) + '.' + avatar_obj.name.split('.')[1]
+            file_obj = open(BASE_DIR + 'static/' + userinfo.avatar, 'wb+')
+            file_obj.write(avatar_obj.read())
+            file_obj.close()
         userinfo.save()
     title = u'用户中心'
     position = 'account'
