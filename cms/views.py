@@ -58,7 +58,7 @@ def Post(request, *args):
                 return HttpResponseRedirect('/post/')
         else:
             form = TestUEditorForm()
-    title = u'新的博文'
+    title = u'发布日志'
     position = 'post'
     return render_to_response('post.html', locals())
 
@@ -101,6 +101,9 @@ def Detail(request, uid):
         blog = try_blog[0]
     else:
         return HttpResponseRedirect('/')
+
+    latest = user.blog_set.order_by('-time')[:5]
+
     title = blog.title
     position = 'detail'
     return render_to_response('detail.html', locals())

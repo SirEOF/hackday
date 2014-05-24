@@ -27,6 +27,12 @@
                     <input type="password" name="password" placeholder="密码" class="form-control">
                 </div>
 
+                {% if Error %}
+                    <div class="alert alert-danger fade in">
+                        {{ Error }}
+                    </div>
+                {% endif %}
+
                 <div class="row">
                     <div class="col-md-6">
 

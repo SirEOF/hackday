@@ -18,7 +18,7 @@ def Login(request):
     if not (request.method == 'POST'):
         if 'callback' in request.GET:
             callback = request.GET['callback']
-        title = u'登入'
+        title = u'登陆'
         position = 'login'
         return render_to_response('login.html', locals())
     else:
@@ -26,10 +26,10 @@ def Login(request):
             callback = request.POST['callback']
         else:
             callback = '/timeline/'
-        if not ('email' in request.POST):
+        if not (request.POST.get('email', '')):
             Error = u'邮箱不能为空'
         else:
-            if not ('password' in request.POST):
+            if not (request.POST.get('password', '')):
                 Error = u'密码不能为空'
     if not Error:
         user = auth.authenticate(username=request.POST['email'], password=request.POST['password']) 
@@ -37,11 +37,11 @@ def Login(request):
             auth.login(request, user)
             matcher(user)
         else:
-            Error = u'该邮箱未注册或密码错误'
+            Error = u'邮箱或密码错误'
     if Error:
-        title = u'登入'
+        title = u'登陆'
         position = 'login'
-        return render_to_response('login.html', {'Error': Error})
+        return render_to_response('login.html', locals())
     else:
         return HttpResponseRedirect(callback)
             
@@ -64,11 +64,11 @@ def Register(request):
         callback = request.POST['callback']
     else:
         callback = '/timeline/'
-    if not ('email' in request.POST):
+    if not (request.POST.get('email', '')):
         Error = u'邮箱不能为空'
-    elif not ('nickname' in request.POST):
+    elif not (request.POST.get('nickname', '')):
         Error = u'昵称不能为空'
-    elif not (('password1' in request.POST) and ('password2' in request.POST)):
+    elif not ((request.POST.get('password1', '')) and (request.POST.get('password2', ''))):
         Error = u'密码不能为空'
     else:
         try:
@@ -89,7 +89,7 @@ def Register(request):
     if Error:
         title = u'注册'
         position = 'register'
-        return render_to_response('register.html', {'Error': Error})
+        return render_to_response('register.html', locals())
     else:
         return HttpResponseRedirect(callback)
 
@@ -114,6 +114,7 @@ def UserCenter(request):
             file_obj.write(avatar_obj.read())
             file_obj.close()
         userinfo.save()
+        return HttpResponseRedirect('/timeline/')
     title = u'用户中心'
     position = 'account'
     return render_to_response('account.html', locals())          
