@@ -41,6 +41,7 @@ def TimeLine(request):
     '''时间轴'''
     if request.user.is_authenticated():
         user = request.user
+        userinfo = user.userinfo_set.all()[0]
     else:
         return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
     blogs = Blog.objects.order_by('-time')
