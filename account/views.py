@@ -30,8 +30,7 @@ def Login(request):
                 Error = u'密码不能为空'
     if not Error:
         user = auth.authenticate(username=request.POST['email'], password=request.POST['password']) 
-        if user:   
-            user = auth.authenticate(username = request.POST['username'], password = request.POST['password']) 
+        if user:
             auth.login(request, user)
         else:
 	    Error = u'该邮箱未注册或密码错误'
