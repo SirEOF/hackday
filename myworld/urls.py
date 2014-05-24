@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^$', 'cms.testview.home', name='home'),
     url(r'^login/$', 'cms.testview.login', name='login'),
     url(r'^register/$', 'cms.testview.register', name='register'),
+    url(r'^timeline/$', 'cms.testview.timeline', name='timeline'),
 )
