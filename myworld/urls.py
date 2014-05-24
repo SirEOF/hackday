@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
@@ -7,12 +9,14 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'myworld.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
-
-    url(r'^$', 'cms.testview.home', name='home'),
-    url(r'^login/$', 'cms.testview.login', name='login'),
-    url(r'^register/$', 'cms.testview.register', name='register'),
-    url(r'^timeline/$', 'cms.testview.timeline', name='timeline'),
-    url(r'^detail/(?P<id>[0-9]+)', 'cms.testview.detail', name='detail'),
+    url(r'^$', 'cms.views.Home', name='home'),
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^post/', 'cms.views.Post', name='post'),
+    url(r'^timeline/', 'cms.views.TimeLine', name='timeline'),
+    url(r'^detail/(.+)/$', 'cms.views.Detail', name='detail'),
+    url(r'^login/', 'account.views.Login', name='login'),
+    url(r'^logout/', 'account.views.Logout', name='logout'),
+    url(r'^register/', 'account.views.Register', name='register'),
+    url(r'^account/', 'account.views.UserCenter', name='account'), 
 )

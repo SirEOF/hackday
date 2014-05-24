@@ -1,65 +1,16 @@
-{% extends "base.html" %}
-{% load staticfiles %}
-
-{% block head %}
-    {% include "common/head.html" %}
-{% endblock %}
-{% block css_page %}
-    <link rel="stylesheet" href="{% static "css/pages/page_log_reg_v1.css" %}">
-{% endblock %}
-{% block header %}
-    {% include "common/header.html" %}
-{% endblock %}
-{% block content %}
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <form class="reg-page">
-                <div class="reg-header">
-                    <h2>注册一个新账户</h2>
-                    <p>已经注册过了？ <a href="{% url "login" %}" class="color-green">点击此处</a> 登陆您的账户。</p>
-                </div>
-
-                <label>您的邮箱 <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-
-                <label>您的昵称 <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label>密码 <span class="color-red">*</span></label>
-                        <input type="password" class="form-control margin-bottom-20">
-                    </div>
-                    <div class="col-sm-6">
-                        <label>确认密码 <span class="color-red">*</span></label>
-                        <input type="password" class="form-control margin-bottom-20">
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            我已经阅读并同意 <a href="page_terms.html" class="color-green">使用协议</a> <span class="color-red">*</span>
-                        </label>
-                    </div>
-                    <div class="col-lg-6 text-right">
-                        <button class="btn-u" type="submit">注册</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-{% endblock %}
-{% block footer %}
-    {% include "common/footer.html" %}
-{% endblock %}
-{% block js_page %}
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            App.init();
-        });
-    </script>
-{% endblock %}
+<html>
+	<head>
+		{% load staticfiles %}
+		
+	</head>	
+	<body>
+                {{ Error }}
+		<form method="POST" action="/register/">
+                <input name="email" type="text" />
+                <input name="nickname" type="text"/>
+    		<input name="password1" type="text"/>
+                <input name="password2" type="text"/>
+                <input type="submit" />
+                </form>
+	</body>
+</html>
