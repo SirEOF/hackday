@@ -10,7 +10,7 @@ class Blog(models.Model):
     user = models.ForeignKey(User)
     private = models.BooleanField(u'是否为私密', default=False)
     uid = models.CharField(u'博文编号', max_length=10)
-    title = models.CharField(u'题目', max_length=100)
+    title = models.CharField(u'题目', max_length=200)
     content = models.TextField()
     time = models.DateTimeField(u'评论时间', auto_now_add=True)
     
