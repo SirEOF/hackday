@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^login/$', 'cms.testview.login', name='login'),
     url(r'^register/$', 'cms.testview.register', name='register'),
     url(r'^timeline/$', 'cms.testview.timeline', name='timeline'),
+    url(r'^detail/(?P<id>[0-9]+)', 'cms.testview.detail', name='detail'),
 )

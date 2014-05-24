@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "css/pages/blog.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block content %}
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->
+            <div class="blog margin-bottom-40">
+                <h2><a href="blog_item_option1.html">Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</a></h2>
+                <div class="blog-post-tags">
+                    <ul class="list-unstyled list-inline blog-info">
+                        <li><i class="fa fa-calendar"></i> February 02, 2013</li>
+                        <li><i class="fa fa-pencil"></i> Diana Anderson</li>
+                    </ul>
+                </div>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p><br>
+                <div class="tag-box tag-box-v2">
+                    <p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiatt non libero consectetur adipiscing elit magna. Sed et quam lacus. Condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>
+                </div>
+                <p>Deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
+            </div>
+            <!--End Blog Post-->
+
+            <hr>
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3 magazine-page">
+            <!-- Search Bar -->
+            <div class="headline headline-md"><h2>搜索</h2></div>
+            <div class="input-group margin-bottom-40">
+                <input type="text" class="form-control" placeholder="请输入您要搜索的内容">
+                <span class="input-group-btn">
+                    <button class="btn-u" type="button">搜索</button>
+                </span>
+            </div>
+            <!-- End Search Bar -->
+
+            <!-- Posts -->
+            <div class="posts margin-bottom-40">
+                <div class="headline headline-md"><h2>最近文章</h2></div>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/6.jpg" %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/10.jpg" %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static "img/sliders/elastislide/11.jpg" %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p>
+                    </dd>
+                </dl>
+            </div><!--/posts-->
+            <!-- End Posts -->
+        </div>
+        <!-- End Right Sidebar -->
+    </div><!--/row-->
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "js/pages/index.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+{% endblock %}
