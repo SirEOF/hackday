@@ -19,7 +19,7 @@
                         <img alt="" src="{% static userinfo.avatar %}" class="img-responsive">
                     </div>
                     <div class="col-md-6">
-                        <h2><a href="#">{{ userinfo.nickname|truncatechars:12 }}</a></h2>
+                        <h2>{{ userinfo.nickname|truncatechars:12 }}</h2>
                         <ul class="list-unstyled funny-boxes-rating">
                         </ul>
                         <p>文章总数：{{ count }} 篇</p>
