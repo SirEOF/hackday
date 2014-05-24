@@ -14,6 +14,3 @@ class UserInfo(models.Model):
     location = models.CharField(u'所在地', max_length=30, default='未知')
     motto = models.CharField(u'座右铭', max_length=100, default='我很懒，什么都不想写')
     avatar = models.URLField(u'头像', default='img/default_avatar.png')
-    
-    
-    

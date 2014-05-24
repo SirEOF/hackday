@@ -1,18 +1,111 @@
-<html>
-	<head>
-		{% load staticfiles %}
-		
-	</head>	
-	<body>
-                {{ Error }}
-		{{ userinfo.nickname }}
-                {{ userinfo.age }}
-                {{ userinfo.location }}
-                <form method="POST" action="/account/">
-                <input name="nickname" type="text" />
-    		<input name="age" type="text"/>
-                <input name="location" type="text" />
-                <input type="submit" />
-                </form>
-	</body>
-</html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block content %}
+    <form method="POST" action="/account/" enctype="multipart/form-data" class="sky-form">
+        <header>管理个人资料</header>
+        <br>
+
+        <div class="row tab-v3">
+            <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a data-toggle="tab" href="#home-2"><i class="fa fa-user"></i> 个人信息</a></li>
+                    <li class=""><a data-toggle="tab" href="#profile-2"><i class="fa fa-cloud"></i> 一句话介绍</a></li>
+                    <li class=""><a data-toggle="tab" href="#messages-2"><i class="fa fa-key"></i> 密码修改</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                <div class="tab-content">
+                    <div id="home-2" class="tab-pane fade active in">
+                        <fieldset>
+                            <section>
+                                <label class="label">昵称</label>
+                                <label class="input">
+                                    <input name="nickname" type="text" value="{{ userinfo.nickname }}" />
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">年龄</label>
+                                <label class="input">
+                                    <input name="age" type="text" value="{{ userinfo.age }}" />
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">地理位置</label>
+                                <label class="input">
+                                    <input name="location" type="text" value="{{ userinfo.location }}" />
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">上传头像</label>
+                                <label class="input input-file" for="file">
+                                    <div class="button"><input name="avatar" type="file" onchange="this.parentNode.nextSibling.value = this.value" id="file">上传</div><input type="text" readonly="">
+                                </label>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <div id="profile-2" class="tab-pane fade">
+                        <fieldset>
+                            <section>
+                                <label class="label">一句话介绍</label>
+                                <label class="textarea">
+                                    <textarea name="motto" rows="3">{{ userinfo.motto }}</textarea>
+                                </label>
+                                <div class="note"><strong>注意：</strong> 该介绍将会向他人展示</div>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <div id="messages-2" class="tab-pane fade">
+                        <fieldset>
+                            <section>
+                                <label class="label">旧密码</label>
+                                <label class="input">
+                                    <input name="old_pwd" type="password" />
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">新密码</label>
+                                <label class="input">
+                                    <input name="new_pwd1" type="password" />
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">确认密码</label>
+                                <label class="input">
+                                    <input name="new_pwd2" type="password" />
+                                </label>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <footer>
+                        <button class="btn-u btn-block" type="submit">提交修改</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+{% endblock %}

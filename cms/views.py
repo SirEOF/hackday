@@ -54,7 +54,9 @@ def TimeLine(request):
             i.isodd = False
     title = u'时间轴'
     position = 'timeline'
-    count = Blog.objects.count()
+    count = len(blogs)
+    stars_full = range(0, int(float(userinfo.stars)))
+    stars_empty = range(0, 5 - int(float(userinfo.stars)))
     return render_to_response('timeline.html', locals())
         
 def Detail(request, uid):
