@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.conf import settings
 
 from myworld.settings import BASE_DIR
 
@@ -110,7 +111,7 @@ def UserCenter(request):
         if 'avatar' in request.FILES:
             avatar_obj = request.FILES.get('avatar')	
             userinfo.avatar = 'img/avatar' + str(user.id) + '.' + avatar_obj.name.split('.')[1]
-            file_obj = open(BASE_DIR + '/static/' + userinfo.avatar, 'wb+')
+            file_obj = open(settings.MEDIA_ROOT + userinfo.avatar, 'wb+')
             file_obj.write(avatar_obj.read())
             file_obj.close()
         userinfo.save()
