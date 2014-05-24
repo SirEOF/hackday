@@ -15,6 +15,6 @@ class UserInfo(models.Model):
     age = models.CharField(u'年龄', max_length=200, default='未知')
     location = models.CharField(u'所在地', max_length=200, default='未知')
     motto = models.TextField(u'座右铭', default='我很懒，什么都不想写')
-    avatar = models.URLField(u'头像', default='img/default_avatar.png')
+    avatar = models.URLField(u'头像', default='/static/img/default_avatar.png')
     other = models.CharField(u'推荐对象', max_length=200, blank=True)
     date = models.DateField(u'更新日期', default=date(1970,1,1))

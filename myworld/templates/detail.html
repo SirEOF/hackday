@@ -54,7 +54,7 @@
                     <div class="headline headline-md"><h2>最新文章</h2></div>
                     <div class="blog-twitter-inner">
                         {% for i in latest %}
-                        <a href="{% url "detail" i.uid %}">{{ i.title }}</a>: {{ i.content|truncatewords_html:4|safe }}
+                        <a href="{% url "detail" i.uid %}">{{ i.title }}</a>: <div class="runimage">{{ i.content|truncatewords_html:4|safe }}</div>
                         <br>
                         {% endfor %}
                     </div>

@@ -406,6 +406,12 @@ ul.blog-tags a:hover {
 	border-top-color: #9b6bcc;	
 }
 
+.blog-twitter p img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
 .blog-twitter .blog-twitter-inner a {
 	color: #9b6bcc;
 }

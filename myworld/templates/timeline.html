@@ -16,7 +16,7 @@
             <div class="funny-boxes funny-boxes-colored funny-boxes-grey">
                 <div class="row">
                     <div class="col-md-6 funny-boxes-img">
-                        <img alt="" src="/media/{{ userinfo.avatar }}" class="img-responsive">
+                        <img alt="" src="{{ userinfo.avatar }}" class="img-responsive">
                     </div>
                     <div class="col-md-6">
                         <h2>{{ userinfo.nickname|truncatechars:12 }}</h2>
@@ -31,8 +31,18 @@
         <div class="col-md-8">
             <div class="funny-boxes funny-boxes-top-sea">
                 <div class="row">
+                    {% if not otherinfo %}
                     <div class="col-md-3 funny-boxes-img">
-                        <img alt="" src="/media/{{ otherinfo.avatar }}" class="img-responsive">
+                        <img alt="" src="/static/img/default_avatar.png" %}" class="img-responsive">
+                    </div>
+                    <div class="col-md-9">
+                        <h2>今日尚无推荐，推荐您写写心情，记录下生活。</h2>
+                        <ul class="list-unstyled funny-boxes-rating">
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="col-md-3 funny-boxes-img">
+                        <img alt="" src="{{ otherinfo.avatar }}" class="img-responsive">
                     </div>
                     <div class="col-md-9">
                         <h2>今日为您推荐：<a href="{% url "others_timeline" %}">{{ otherinfo.nickname }}</a></h2>
@@ -40,6 +50,7 @@
                         </ul>
                         <p>{{ otherinfo.motto }}</p>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

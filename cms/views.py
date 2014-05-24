@@ -33,7 +33,7 @@ def Post(request, *args):
             if args: 
                 uid = args[0]
                 try:
-                    blog = Blog.objects.get(uid=uid)
+                    blog = user.blog_set.get(uid=uid)
                     blog.title = request.POST['title']
                     blog.content = request.POST['content']
                     blog.private = request.POST.get('private', False)=='on'
@@ -85,7 +85,10 @@ def TimeLine(request):
     tmp_a = matcher(tmp_user)
     tmp_userinfo = tmp_user.userinfo_set.all()[0]
     tmp_other = User.objects.get(id=int(tmp_userinfo.other))
-    otherinfo = tmp_other.userinfo_set.all()[0]
+    if tmp_other.userinfo_set.all():
+        otherinfo = tmp_other.userinfo_set.all()[0]
+    else:
+        otherinfo = None
 
     return render_to_response('timeline.html', locals())
         

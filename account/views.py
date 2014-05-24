@@ -110,8 +110,8 @@ def UserCenter(request):
             user.save()
         if 'avatar' in request.FILES:
             avatar_obj = request.FILES.get('avatar')	
-            userinfo.avatar = 'avatar' + str(user.id) + '.' + avatar_obj.name.split('.')[1]
-            file_obj = open(settings.MEDIA_ROOT + userinfo.avatar, 'wb+')
+            userinfo.avatar = '/media/avatar' + str(user.id) + '.' + avatar_obj.name.split('.')[1]
+            file_obj = open(settings.BASE_DIR + userinfo.avatar, 'wb+')
             file_obj.write(avatar_obj.read())
             file_obj.close()
         userinfo.save()
