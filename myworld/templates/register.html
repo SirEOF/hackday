@@ -13,26 +13,26 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <form class="reg-page">
+            <form class="reg-page" method="POST" action="/register/">
                 <div class="reg-header">
                     <h2>注册一个新账户</h2>
                     <p>已经注册过了？ <a href="{% url "login" %}" class="color-green">点击此处</a> 登陆您的账户。</p>
                 </div>
 
                 <label>您的邮箱 <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
+                <input type="text" name="email" class="form-control margin-bottom-20">
 
                 <label>您的昵称 <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
+                <input type="text" name="nickname" class="form-control margin-bottom-20">
 
                 <div class="row">
                     <div class="col-sm-6">
                         <label>密码 <span class="color-red">*</span></label>
-                        <input type="password" class="form-control margin-bottom-20">
+                        <input type="password" name="password1" class="form-control margin-bottom-20">
                     </div>
                     <div class="col-sm-6">
                         <label>确认密码 <span class="color-red">*</span></label>
-                        <input type="password" class="form-control margin-bottom-20">
+                        <input type="password" name="password2" class="form-control margin-bottom-20">
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
                     <div class="col-lg-6">
                         <label class="checkbox">
                             <input type="checkbox">
-                            我已经阅读并同意 <a href="page_terms.html" class="color-green">使用协议</a> <span class="color-red">*</span>
+                            我已经阅读并同意 <a href="" class="color-green">使用协议</a> <span class="color-red">*</span>
                         </label>
                     </div>
                     <div class="col-lg-6 text-right">

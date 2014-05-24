@@ -19,7 +19,7 @@
                         <img alt="" src="{% static "img/doraemonext.png" %}" class="img-responsive">
                     </div>
                     <div class="col-md-6">
-                        <h2><a href="#">Doraemonext</a></h2>
+                        <h2><a href="#">{{ user.username|truncatechars:12 }}</a></h2>
                         <ul class="list-unstyled funny-boxes-rating">
                            <li><i class="fa fa-star"></i></li>
                            <li><i class="fa fa-star"></i></li>
@@ -27,7 +27,7 @@
                            <li><i class="fa fa-star"></i></li>
                            <li><i class="fa fa-star-o"></i></li>
                         </ul>
-                        <p>文章总数：200 篇</p>
+                        <p>文章总数：{{ count }} 篇</p>
                         <p>访客共计：10 人</p>
                         <p>当前账户积分：400</p>
                     </div>
@@ -57,129 +57,27 @@
     </div>
 
     <ul class="timeline-v1">
+        {% for i in blogs %}
+        {% ifequal i.isodd 1 %}
         <li>
+        {% else %}
+        <li class="timeline-inverted">
+        {% endifequal %}
             <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
             <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <img class="img-responsive" src="{% static "img/timeline/img1.1.jpg" %}" alt=""/>
-                </div>
                 <div class="timeline-body text-justify">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn-u btn-u-sm" href="#">Read More</a>
+                    <h2><a href="{% url "detail" i.id %}">{{ i.title }}</a></h2>
+                    <p>{{ i.content|safe }}</p>
+                    <a class="btn-u btn-u-sm" href="{% url "detail" i.id %}">阅读全部</a>
                 </div>
                 <div class="timeline-footer">
                     <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> March 28, 2014</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">7 Comments</a></li>
+                        <li><i class="fa fa-clock-o"></i> {{ i.time }}</li>
                     </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>239</a>
                 </div>
             </div>
         </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record invert"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <img class="img-responsive" src="{% static "img/timeline/img1.2.jpg" %}" alt=""/>
-                </div>
-                <div class="timeline-body text-justify">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn-u btn-u-sm" href="#">Read More</a>
-                </div>
-                <div class="timeline-footer">
-                    <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> March 16, 2014</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">12 Comments</a></li>
-                    </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>87</a>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <img class="img-responsive" src="{% static "img/timeline/img1.1.jpg" %}" alt=""/>
-                </div>
-                <div class="timeline-body text-justify">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn-u btn-u-sm" href="#">Read More</a>
-                </div>
-                <div class="timeline-footer">
-                    <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> March 28, 2014</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">7 Comments</a></li>
-                    </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>239</a>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <img class="img-responsive" src="{% static "img/timeline/img1.4.jpg" %}" alt=""/>
-                </div>
-                <div class="timeline-body text-justify">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn-u btn-u-sm" href="#">Read More</a>
-                </div>
-                <div class="timeline-footer">
-                    <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> November 02, 2014</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">24 Comments</a></li>
-                    </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>34</a>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record invert"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <img class="img-responsive" src="{% static "img/timeline/img1.6.jpg" %}" alt=""/>
-                </div>
-                <div class="timeline-body text-justify">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn-u btn-u-sm" href="#">Read More</a>
-                </div>
-                <div class="timeline-footer primary">
-                    <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> February 26, 2014</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">93 Comments</a></li>
-                    </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>355</a>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record invert"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <div class="responsive-video">
-                        <img class="img-responsive" src="{% static "img/timeline/img1.6.jpg" %}" alt=""/>
-                    </div>
-                </div>
-                <div class="timeline-body">
-                    <h2><a href="#">Timeline Heading</a></h2>
-                    <p>I only make it responsive and remove the empty spaces to be more like Facebook timeline!</p>
-                    <a class="btn-u" href="#">Read More</a>
-                </div>
-                <div class="timeline-footer primary">
-                    <ul class="list-inline">
-                        <ul class="list-unstyled list-inline blog-info">
-                        <li><i class="fa fa-clock-o"></i> November 29, 2013</li>
-                        <li><i class="fa fa-comments-o"></i> <a href="#">162 Comments</a></li>
-                    </ul>
-                    <a class="likes" href="#"><i class="fa fa-heart"></i>798</a>
-                </ul>
-            </div>
-        </li>
+        {% endfor %}
         <li class="clearfix" style="float: none;"></li>
     </ul>
 {% endblock %}

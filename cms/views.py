@@ -13,7 +13,7 @@ from account.views import *
 def Home(request):
     '''主页'''
     if request.user.is_authenticated():
- 	user = request.user
+        user = request.user
     title = u'主页'
     position = 'home'
     return render_to_response('home.html', locals())
@@ -21,9 +21,9 @@ def Home(request):
 def Post(request):  
     '''编辑博文和处理'''
     if request.user.is_authenticated():
- 	user = request.user 
+        user = request.user
     else:
- 	return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/post/')
+        return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/post/')
     if request.method == 'POST':
         form = TestUEditorForm(request.POST) 
         if form.is_valid():
@@ -40,22 +40,28 @@ def Post(request):
 def TimeLine(request):
     '''时间轴'''
     if request.user.is_authenticated():
- 	user = request.user 
+        user = request.user
     else:
- 	return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
+        return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
     blogs = Blog.objects.order_by('-time')
+    for index, i in enumerate(blogs):
+        if index % 2 == 0:
+            i.isodd = True
+        else:
+            i.isodd = False
     title = u'时间轴'
     position = 'timeline'
+    count = Blog.objects.count()
     return render_to_response('timeline.html', locals())
         
 def Detail(request, uid):
     '''博文详细'''
     if request.user.is_authenticated():
- 	user = request.user 
+        user = request.user
     else:
- 	return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
+        return HttpResponseRedirect('/login/?Error=LoginFirst&callback=/timeline/')
     try:
-        blog = Blog.objects.get(uid=uid)
+        blog = Blog.objects.get(id=uid)
     except Blog.DoesNotExist:
         raise Http404
     title = blog.title

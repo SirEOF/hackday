@@ -109,12 +109,12 @@ UEDITOR_SETTINGS={
     },
     "images_upload":{
         "allow_type":"jpg,png",    #定义允许的上传的图片类型
-        "path":"uploads/",                   #定义默认的上传路径
+        "path":"/uploads/",                   #定义默认的上传路径
         "max_size":"2222kb"        #定义允许上传的图片大小，0代表不限制
     },
     "files_upload":{
         "allow_type":"zip,rar",   #定义允许的上传的文件类型
-        "path":"uploads/",                  #定义默认的上传路径
+        "path":"/uploads/",                  #定义默认的上传路径
         "max_size":"2222kb"       #定义允许上传的文件大小，0代表不限制
     },
     "image_manager":{

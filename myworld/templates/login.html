@@ -13,23 +13,23 @@
 {% block content %}
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-            <form class="reg-page">
+            <form class="reg-page" method="POST" action="/login/">
                 <div class="reg-header">
                     <h2>登陆</h2>
                 </div>
 
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" placeholder="邮箱地址" class="form-control">
+                    <input type="text" name="email" placeholder="邮箱地址" class="form-control">
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" placeholder="密码" class="form-control">
+                    <input type="password" name="password" placeholder="密码" class="form-control">
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="checkbox"><input type="checkbox"> 保持登陆状态</label>
+
                     </div>
                     <div class="col-md-6">
                         <button class="btn-u pull-right" type="submit">登陆</button>

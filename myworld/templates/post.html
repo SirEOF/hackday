@@ -1,14 +1,48 @@
-<html>
-	<head>
-		{% load staticfiles %}
-		
-	</head>	
-	<body>
-		<form action="/post/" method="post">
-		{% csrf_token %}
-                {{ form.media }}   
-                {{ form.as_p }}
-		<input type="submit" value="Submit" />
-		</form>
-	</body>
-</html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "css/pages/blog.css" %}">
+    {{ form.media }}
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block content %}
+    <div class="tag-box tag-box-v3 form-page">
+        <form method="POST" action="/post/">
+            <div class="headline"><h3>发布日志</h3></div>
+
+            <!--Inputs-->
+            <h4>标题</h4>
+            <input type="text" name="title" placeholder="请输入您的日志标题" class="form-control">
+            <!--End Inputs-->
+
+            <div class="margin-bottom-40"></div>
+
+            <!--Textarea-->
+            <h4>日志内容</h4>
+            {{ form.content }}
+            <!--End Textarea-->
+
+            <div class="margin-bottom-40"></div>
+
+            <button type="submit" class="btn-u btn-block">提交日志</button>
+        </form>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "js/pages/index.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+{% endblock %}
+
