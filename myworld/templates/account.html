@@ -1,0 +1,18 @@
+<html>
+	<head>
+		{% load staticfiles %}
+		
+	</head>	
+	<body>
+                {{ Error }}
+		{{ userinfo.nickname }}
+                {{ userinfo.age }}
+                {{ userinfo.location }}
+                <form method="POST" action="/account/">
+                <input name="nickname" type="text" />
+    		<input name="age" type="text"/>
+                <input name="location" type="text" />
+                <input type="submit" />
+                </form>
+	</body>
+</html>

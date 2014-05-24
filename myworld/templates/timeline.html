@@ -1,0 +1,12 @@
+<html>
+	<head>
+		{% load staticfiles %}
+		
+	</head>	
+	<body>
+		{% for i in blogs %}
+ 		    {{ i.title }} <br/>
+                    {{ i.content }} <br/>
+                {% endfor %}
+	</body>
+</html>
