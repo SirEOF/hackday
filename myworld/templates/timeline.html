@@ -16,7 +16,7 @@
             <div class="funny-boxes funny-boxes-colored funny-boxes-grey">
                 <div class="row">
                     <div class="col-md-6 funny-boxes-img">
-                        <img alt="" src="{% static userinfo.avatar %}" class="img-responsive">
+                        <img alt="" src="/media/{{ userinfo.avatar }}" class="img-responsive">
                     </div>
                     <div class="col-md-6">
                         <h2>{{ userinfo.nickname|truncatechars:12 }}</h2>
@@ -32,7 +32,7 @@
             <div class="funny-boxes funny-boxes-top-sea">
                 <div class="row">
                     <div class="col-md-3 funny-boxes-img">
-                        <img alt="" src="{% static otherinfo.avatar %}" class="img-responsive">
+                        <img alt="" src="/media/{{ otherinfo.avatar }}" class="img-responsive">
                     </div>
                     <div class="col-md-9">
                         <h2>今日为您推荐：<a href="{% url "others_timeline" %}">{{ otherinfo.nickname }}</a></h2>

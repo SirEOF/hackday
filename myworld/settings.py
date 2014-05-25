@@ -79,8 +79,10 @@ WSGI_APPLICATION = 'myworld.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hackday',
+        'USER': 'root',
+        'PASSWORD': 'root',
     }
 }
 
@@ -102,8 +104,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 UEDITOR_SETTINGS={
     "toolbars":{           #定义多个工具栏显示的按钮，允行定义多个
@@ -112,12 +114,12 @@ UEDITOR_SETTINGS={
     },
     "images_upload":{
         "allow_type":"jpg,png",    #定义允许的上传的图片类型
-        "path":MEDIA_ROOT,                   #定义默认的上传路径
+        "path":"",                   #定义默认的上传路径
         "max_size":"2222kb"        #定义允许上传的图片大小，0代表不限制
     },
     "files_upload":{
         "allow_type":"zip,rar",   #定义允许的上传的文件类型
-        "path":MEDIA_ROOT,                  #定义默认的上传路径
+        "path":"",                  #定义默认的上传路径
         "max_size":"2222kb"       #定义允许上传的文件大小，0代表不限制
     },
     "image_manager":{
