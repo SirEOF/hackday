@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "css/pages/feature_timeline1.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="funny-boxes funny-boxes-colored funny-boxes-grey">
+                <div class="row">
+                    <div class="col-md-6 funny-boxes-img">
+                        <img alt="" src="{% static userinfo.avatar %}" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h2><a href="#">{{ userinfo.nickname|truncatechars:12 }}</a></h2>
+                        <ul class="list-unstyled funny-boxes-rating">
+                        <!--
+                            {% for i in stars_full %}
+                                <li><i class="fa fa-star"></i></li>
+                            {% endfor %}
+                            {% for i in stars_empty %}
+                                <li><i class="fa fa-star-o"></i></li>
+                            {% endfor %}
+                            -->
+                        </ul>
+                        <p>文章总数：{{ count }} 篇</p>
+                        <p>访客共计：10 人</p>
+                        <p>当前账户积分：400</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="funny-boxes funny-boxes-top-sea">
+                <div class="row">
+                    <div class="col-md-3 funny-boxes-img">
+                        <img alt="" src="{% static otherinfo.avatar %}" class="img-responsive">
+                    </div>
+                    <div class="col-md-9">
+                        <h2>今日为您推荐：<a href="{% url "others_timeline" %}">{{ otherinfo.nickname }}</a></h2>
+                        <ul class="list-unstyled funny-boxes-rating">
+                            <!--
+                           <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                           -->
+                        </ul>
+                        <p>{{ otherinfo.motto }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="timeline-v1">
+        {% for i in blogs %}
+        {% ifequal i.isodd 1 %}
+        <li>
+        {% else %}
+        <li class="timeline-inverted">
+        {% endifequal %}
+            <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
+            <div class="timeline-panel">
+                <div class="timeline-body text-justify">
+                    <h2><a href="{% url "detail" i.uid %}">{{ i.title }}</a></h2>
+                    <p>{{ i.content|truncatewords_html:15|safe }}</p>
+                    <a class="btn-u btn-u-sm" href="{% url "detail" i.uid %}">阅读全部</a>
+                </div>
+                <div class="timeline-footer">
+                    <ul class="list-unstyled list-inline blog-info">
+                        <li><i class="fa fa-clock-o"></i> {{ i.time|date:"Y-m-d H:i:s" }}</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        <li class="clearfix" style="float: none;"></li>
+    </ul>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "js/pages/index.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
+{% endblock %}

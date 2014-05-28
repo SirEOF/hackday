@@ -3,16 +3,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-import datetime
+from datetime import date
 
 class UserInfo(models.Model):
-    user = models.OneToOneField(User)
-    score = models.CharField(u'', max_length=5, default='0')
-    name = models.CharField(u'', max_length=10, default='佚名')
-    birthday = models.DateField(u'', default=datetime.date(2000,1,1))
-    location = models.CharField(u'', max_length=30, default='未知')
-    motto = models.CharField(u'', max_length=100, default='我很懒，什么都不想写')
-    src_url = models.URLField(u'', max_length=30)
-    
-    
-    
+    '''用户信息'''
+    user = models.ForeignKey(User)
+    nickname = models.CharField(u'昵称', max_length=10)
+    score = models.CharField(u'积分', max_length=5, default='0')
+    stars = models.CharField(u'评分', max_length=5, default='0.0')
+    visit = models.CharField(u'访问量', max_length=5, default='0')
+    age = models.CharField(u'年龄', max_length=5, default='未知')
+    location = models.CharField(u'所在地', max_length=30, default='未知')
+    motto = models.CharField(u'座右铭', max_length=100, default='我很懒，什么都不想写')
+    avatar = models.URLField(u'头像', default='img/default_avatar.png')
+    other = models.CharField(u'推荐对象', max_length=10, blank=True)
+    date = models.DateField(u'更新日期', default=date(1970,1,1))

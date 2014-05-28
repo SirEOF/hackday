@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "plugins/fancybox/source/jquery.fancybox.css" %}">
+    <link rel="stylesheet" href="{% static "css/pages/feature_timeline2.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <!-- Begin Sidebar Menu -->
+        <div class="col-md-3">
+            <div class="servive-block servive-block-default">
+                <img class="img-responsive" src="{% static otherinfo.avatar %}">
+                <h2 class="heading-md">{{ otherinfo.nickname }}</h2>
+                <p>{{ otherinfo.motto }}</p>
+            </div>
+        </div>
+        <!-- End Sidebar Menu -->
+
+        <!-- Begin Content -->
+        <div class="col-md-9">
+            <ul class="timeline-v2">
+                {% for i in blogs %}
+                    {% if not i.private %}
+                    <li>
+                        <time class="cbp_tmtime" datetime=""><span>{{ i.time|date:"H:i:s" }}</span> <span>{{ i.time|date:"Y-m-d" }}</span></time>
+                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                        <div class="cbp_tmlabel">
+                            <h2><a href="{% url "others_detail" i.uid %}">{{ i.title }}</a></h2>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ i.content|truncatewords_html:19|safe }}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- End Content -->
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "plugins/fancybox/source/jquery.fancybox.pack.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initFancybox();
+        });
+    </script>
+{% endblock %}

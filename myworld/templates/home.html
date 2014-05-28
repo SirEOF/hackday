@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    {% include "common/head.html" %}
+{% endblock %}
+{% block css_page %}
+    <link rel="stylesheet" href="{% static "plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" %}">
+    <link rel="stylesheet" href="{% static "css/pages/page_search.css" %}">
+{% endblock %}
+{% block header %}
+    {% include "common/header.html" %}
+{% endblock %}
+{% block slider %}
+    {% include "common/slider.html" %}
+{% endblock %}
+{% block content %}
+    <div class="row margin-bottom-30">
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-lock service-icon"></i>
+                <div class="desc">
+                    <h4>个人世界</h4>
+                    <p>在这里你可以静静地记录自己独一无二的人生历程，尽情倾诉你的心声</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-group service-icon"></i>
+                <div class="desc">
+                    <h4>连接他人</h4>
+                    <p>在这里你可以悠悠地欣赏他人丰富多彩的生活经历，充分满足你的好奇</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-rocket service-icon"></i>
+                <div class="desc">
+                    <h4>探索生活</h4>
+                    <p>在这里你可以思考自己的人生，观察他人的经历，探索生活的意义</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include "common/footer.html" %}
+{% endblock %}
+{% block js_page %}
+    <script type="text/javascript" src="{% static "plugins/jquery.parallax.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/counter/waypoints.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "plugins/counter/jquery.counterup.min.js" %}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initCounter();
+            App.initParallaxBg();
+        });
+    </script>
+{% endblock %}

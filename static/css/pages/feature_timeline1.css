@@ -132,6 +132,12 @@
     margin-bottom: 20px;
 }
 
+.timeline-body p img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 .timeline-v1 .timeline-footer{
     padding: 7px 12px;
     overflow: hidden;
@@ -164,7 +170,7 @@
 }
 
 .timeline-v1 > li.timeline-inverted{
-	float: right; 
+	float: right;
 	clear: right;
 	margin-bottom: 40px;
 }
