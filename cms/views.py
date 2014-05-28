@@ -9,6 +9,7 @@ from django.forms import *
 from cms.forms import *
 from cms.models import *
 from account.views import *
+from recommend.views import matcher
 
 def Home(request):
     '''主页'''
@@ -35,14 +36,15 @@ def Post(request, *args):
                     blog = Blog.objects.get(uid=uid)
                     blog.title = request.POST['title']
                     blog.content = request.POST['content']
-                    blog.private = (request.POST['private']=='1')
+                    blog.private = request.POST.get('private', False)=='on'
+                    blog.save()
                 except Blog.DoesNotExist:
                     return HttpResponseRedirect('/post/')
             else:
                 blog = Blog(uid=str(len(Blog.objects.all())+1).zfill(4), 
                        title=request.POST['title'], 
                        content=request.POST['content'], 
-                       private=(request.POST['private']=='1'))   
+                       private=(request.POST.get('private', False)=='on'))
             blog.user = user 
             blog.save()
             return HttpResponseRedirect('/timeline/')
@@ -50,10 +52,12 @@ def Post(request, *args):
         if args: 
             uid = args[0]
             try:
-                blog = Blog.objects.get(uid=uid)
+                blog = user.blog_set.get(uid=uid)
+                form = TestUEditorForm(initial={'content': blog.content})
             except Blog.DoesNotExist:
                 return HttpResponseRedirect('/post/')
-        form = TestUEditorForm() 
+        else:
+            form = TestUEditorForm()
     title = u'新的博文'
     position = 'post'
     return render_to_response('post.html', locals())
@@ -76,6 +80,13 @@ def TimeLine(request):
     count = len(blogs)
     stars_full = range(0, int(float(userinfo.stars)))
     stars_empty = range(0, 5 - int(float(userinfo.stars)))
+
+    tmp_user = request.user
+    tmp_a = matcher(tmp_user)
+    tmp_userinfo = tmp_user.userinfo_set.all()[0]
+    tmp_other = User.objects.get(id=int(tmp_userinfo.other))
+    otherinfo = tmp_other.userinfo_set.all()[0]
+
     return render_to_response('timeline.html', locals())
         
 def Detail(request, uid):

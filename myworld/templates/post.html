@@ -6,6 +6,7 @@
 {% endblock %}
 {% block css_page %}
     <link rel="stylesheet" href="{% static "css/pages/blog.css" %}">
+    <link href="{% static "plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" %}" rel="stylesheet">
     {{ form.media }}
 {% endblock %}
 {% block header %}
@@ -13,12 +14,16 @@
 {% endblock %}
 {% block content %}
     <div class="tag-box tag-box-v3 form-page">
+        {% if blog.title %}
+        <form method="POST" action="/post/{{ blog.uid }}/">
+        {% else %}
         <form method="POST" action="/post/">
+        {% endif %}
             <div class="headline"><h3>发布日志</h3></div>
 
             <!--Inputs-->
             <h4>标题</h4>
-            <input type="text" name="title" placeholder="请输入您的日志标题" class="form-control">
+            <input type="text" name="title" placeholder="请输入您的日志标题" class="form-control" value="{{ blog.title }}">
             <!--End Inputs-->
 
             <div class="margin-bottom-40"></div>
@@ -28,7 +33,17 @@
             {{ form.content }}
             <!--End Textarea-->
 
-            <div class="margin-bottom-40"></div>
+            <br />
+            <label class="checkbox-inline">
+                {% if blog.private %}
+                <input type="checkbox" name="private" checked>
+                {% else %}
+                <input type="checkbox" name="private">
+                {% endif %}
+                <span class="color-red"><strong>是否为私密日志</strong></span>
+            </label>
+
+            <div class="margin-bottom-20"></div>
 
             <button type="submit" class="btn-u btn-block">提交日志</button>
         </form>

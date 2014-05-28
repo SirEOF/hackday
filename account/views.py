@@ -8,6 +8,7 @@ from django.contrib import auth
 from myworld.settings import BASE_DIR
 
 from account.models import *
+from recommend.views import matcher
 
 def Login(request):
     '''登入页面和处理'''
@@ -34,8 +35,9 @@ def Login(request):
         user = auth.authenticate(username=request.POST['email'], password=request.POST['password']) 
         if user:
             auth.login(request, user)
+            matcher(user)
         else:
-	    Error = u'该邮箱未注册或密码错误'
+            Error = u'该邮箱未注册或密码错误'
     if Error:
         title = u'登入'
         position = 'login'
@@ -83,6 +85,7 @@ def Register(request):
                 userinfo.save()
                 user = auth.authenticate(username = request.POST['email'], password = request.POST['password1']) 
                 auth.login(request, user)
+                matcher(user)
     if Error:
         title = u'注册'
         position = 'register'

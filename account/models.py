@@ -3,6 +3,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from datetime import date
+
 class UserInfo(models.Model):
     '''用户信息'''
     user = models.ForeignKey(User)
@@ -14,3 +16,5 @@ class UserInfo(models.Model):
     location = models.CharField(u'所在地', max_length=30, default='未知')
     motto = models.CharField(u'座右铭', max_length=100, default='我很懒，什么都不想写')
     avatar = models.URLField(u'头像', default='img/default_avatar.png')
+    other = models.CharField(u'推荐对象', max_length=10, blank=True)
+    date = models.DateField(u'更新日期', default=date(1970,1,1))

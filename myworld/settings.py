@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'cms',
     'account',
     'album',
+    'recommend',
 )
 
 MIDDLEWARE_CLASSES = (
